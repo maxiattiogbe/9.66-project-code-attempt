@@ -1,0 +1,43 @@
+// bAbI task qa1_single-supporting-fact_test
+// 1 John travelled to the hallway.
+// 2 Mary journeyed to the bathroom.
+// 3 Where is John? 	hallway	1
+// 4 Daniel went back to the bathroom.
+// 5 John moved to the bedroom.
+// 6 Where is Mary? 	bathroom	2
+// GPT-3.5 doesn't know where Mary is.
+
+// Define the premises
+var allPeopleAreWhereTheyWereLast = function(person) {
+    return person[person.length - 1];
+};
+
+// Define the deductive rule
+var whereIs = function(person) {
+    return allPeopleAreWhereTheyWereLast(person);
+};
+
+// First question
+var john = ["hallway"];
+var mary = ["bathroom"];
+
+// Perform deductive reasoning about John
+var conclusion = whereIs(john);
+
+// Output the conclusion
+console.log("John is in the", conclusion);
+
+// Second question
+var daniel = ["bathroom"];
+john.push("bedroom");
+
+// Perform deductive reasoning about Mary
+var conclusion = whereIs(mary);
+
+// Output the conclusion
+console.log("Mary is in the", conclusion);
+
+
+
+
+
